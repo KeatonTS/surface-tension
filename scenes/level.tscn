@@ -1,15 +1,23 @@
-[gd_scene load_steps=7 format=4 uid="uid://dwmx4yklec2tb"]
+[gd_scene load_steps=11 format=4 uid="uid://brsj4vo6ug706"]
 
+[ext_resource type="Script" path="res://scripts/level/level.gd" id="1_1mwno"]
 [ext_resource type="Texture2D" uid="uid://rp6ra02ufwkx" path="res://graphics/background/Custom-Far.png" id="1_w55wr"]
 [ext_resource type="Texture2D" uid="uid://bufhrp75i3f6p" path="res://graphics/background/foregound-merged.png" id="2_1bv1m"]
-[ext_resource type="Script" path="res://character_body_2d.gd" id="3_6r8om"]
-[ext_resource type="Texture2D" uid="uid://caa2b22fxyikv" path="res://graphics/bubble/bubble_anim1.png" id="4_xskov"]
+[ext_resource type="PackedScene" uid="uid://drctst1hqx437" path="res://scenes/Player/bubble.tscn" id="4_4mtji"]
+[ext_resource type="Script" path="res://scripts/camera/camera_2d.gd" id="5_7n4uv"]
 [ext_resource type="TileSet" uid="uid://nncl6vgkvdt" path="res://graphics/background/tilemap.tres" id="5_717d2"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_xveo0"]
+[ext_resource type="PackedScene" uid="uid://dgtsnke3hf2hj" path="res://scenes/Enemies/urchin/urchin.tscn" id="6_jnxko"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_xx1p2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p452b"]
-radius = 23.0
+[sub_resource type="Resource" id="Resource_em6v2"]
+script = ExtResource("6_xx1p2")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_1mwno")
 
 [node name="Parallax" type="Node2D" parent="."]
 visible = false
@@ -31,20 +39,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_1bv1m")
 centered = false
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("3_6r8om")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.164063, 0.164063)
-texture = ExtResource("4_xskov")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_p452b")
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(1.65, 1.65)
-limit_bottom = 30
-
 [node name="TileMapLayers" type="Node2D" parent="."]
 
 [node name="BaseLayer" type="TileMapLayer" parent="TileMapLayers"]
@@ -55,3 +49,72 @@ tile_set = ExtResource("5_717d2")
 [node name="DecorLayer" type="TileMapLayer" parent="TileMapLayers"]
 tile_map_data = PackedByteArray("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")
 tile_set = ExtResource("5_717d2")
+
+[node name="Bubble" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4_4mtji")]
+position = Vector2(-76, -136)
+scale = Vector2(0.3, 0.3)
+level = NodePath("..")
+
+[node name="CollisionShape2D" parent="Bubble" index="0"]
+visible = false
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
+top_level = true
+position = Vector2(-76, -136)
+script = ExtResource("5_xveo0")
+follow_mode = 3
+follow_targets = [null]
+tween_resource = SubResource("Resource_em6v2")
+
+[node name="Camera2D" type="Camera2D" parent="PhantomCamera2D"]
+limit_bottom = 30
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+script = ExtResource("5_7n4uv")
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Urchins" type="Node2D" parent="Obstacles"]
+
+[node name="Urchin" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(-122, -1068)
+
+[node name="Urchin2" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(128, -1556)
+
+[node name="Urchin3" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(35.6074, -2378.64)
+
+[node name="Urchin4" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(-64.4431, -2786.4)
+
+[node name="Urchin5" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(177.189, -3360.27)
+
+[node name="Urchin6" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(-149, -4482)
+
+[node name="Urchin7" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(-334.755, -5144.32)
+
+[node name="RespawnPoint" type="Marker2D" parent="."]
+position = Vector2(-75.459, -136.655)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1054.0
+offset_top = -5728.0
+offset_right = -44.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.286275, 0.564706, 0.572549)
+
+[editable path="Bubble"]

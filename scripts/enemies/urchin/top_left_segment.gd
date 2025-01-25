@@ -12,4 +12,5 @@ func _on_life_timer_timeout() -> void:
 
 func _on_spike_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Bubble"):
+		body.pop()
 		queue_free()

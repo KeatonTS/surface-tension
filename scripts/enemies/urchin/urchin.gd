@@ -46,8 +46,8 @@ func extract():
 
 func fire():
 	var scale_tween = create_tween()
-	scale = Vector2(1.25, 1.25)
-	scale_tween.tween_property(self, "scale", Vector2(1, 1), 0.25)
+	scale = Vector2(0.6, 0.65)
+	scale_tween.tween_property(self, "scale", Vector2(0.5, 0.5), 0.25)
 	var index = 0
 	
 	# Adds a new spike for each position
@@ -78,3 +78,8 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	active = false
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Bubble"):
+		body.pop()

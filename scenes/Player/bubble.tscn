@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://drctst1hqx437"]
+[gd_scene load_steps=8 format=3 uid="uid://drctst1hqx437"]
 
 [ext_resource type="Script" path="res://scripts/bubble/bubble.gd" id="1_owvo3"]
 [ext_resource type="Texture2D" uid="uid://caa2b22fxyikv" path="res://graphics/bubble/bubble_anim1.png" id="2_7m51x"]
 [ext_resource type="Texture2D" uid="uid://2yxn85b4drcq" path="res://graphics/bubble/bubble_anim2.png" id="3_3u6yh"]
+[ext_resource type="AudioStream" uid="uid://ceo8kf2uonl0x" path="res://audio/pop.wav" id="4_knp6t"]
+[ext_resource type="AudioStream" uid="uid://drulcl4xj42s6" path="res://audio/swim.wav" id="4_qya7y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dswyd"]
 radius = 125.16
@@ -21,7 +23,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Bubble" type="CharacterBody2D"]
+[node name="Bubble" type="CharacterBody2D" groups=["Bubble"]]
 script = ExtResource("1_owvo3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -34,3 +36,19 @@ position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_bimam")
 autoplay = "default"
 frame_progress = 0.633968
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Swim" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_qya7y")
+volume_db = -5.0
+
+[node name="Pop" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_knp6t")
+volume_db = 5.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(13.4, 13.1)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
