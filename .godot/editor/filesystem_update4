@@ -1,3 +1,4 @@
-res://scenes/parallax.tscn
-res://character_body_2d.gd
+res://scenes/Player/bubble.tscn
+res://scripts/particles/bubbles.tres
+res://scenes/level.tscn
 res://graphics/background/tilemap.tres
