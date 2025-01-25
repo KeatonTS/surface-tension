@@ -1,0 +1,32 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=6 format=3 uid="uid://bcodp45p2kfd3"]
+
+[sub_resource type="Curve" id="Curve_u7mhj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496368, 0.508756), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t2alo"]
+curve = SubResource("Curve_u7mhj")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_wm8ct"]
+
+[sub_resource type="Curve" id="Curve_0xrgp"]
+_data = [Vector2(0, 0), 0.0, 0.227023, 0, 0, Vector2(0.749175, 0.164835), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pdwww"]
+curve = SubResource("Curve_0xrgp")
+
+[resource]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 1)
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_wm8ct")
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 67.57
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_pdwww")
+alpha_curve = SubResource("CurveTexture_t2alo")
+turbulence_enabled = true
