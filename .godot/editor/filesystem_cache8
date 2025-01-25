@@ -1,18 +1,43 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737819213
+::res://::1737835216
 icon.svg::CompressedTexture2D::4027565821163823554::1737818139::1737818144::1::::<><>::
 README.md::TextFile::-1::1737818267::0::1::::<><>::
 ::res://audio/::1737819161
-::res://graphics/::1737819291
+::res://graphics/::1737832110
 ::res://graphics/background/::1737819274
-::res://graphics/bubble/::1737819343
-bubble_anim1.png::CompressedTexture2D::4774483972083840409::1737819337::1737819348::1::::<><>::
-bubble_anim2.png::CompressedTexture2D::1946065330177715360::1737819337::1737819348::1::::<><>::
+::res://graphics/bubble/::1737819710
+bubble_anim1.png::CompressedTexture2D::4774483972083840409::1737819530::1737819710::1::::<><>::
+bubble_anim2.png::CompressedTexture2D::1946065330177715360::1737819530::1737819710::1::::<><>::
 ::res://graphics/enemies/::1737819308
 ::res://graphics/enemies/fish/::1737819303
-::res://graphics/enemies/sea urchin/::1737819285
+::res://graphics/enemies/sea urchin/::1737828174
+spike.png::CompressedTexture2D::3217966653402235308::1737828172::1737828174::1::::<><>::
+urchin.png::CompressedTexture2D::303510213121589079::1737828104::1737828174::1::::<><>::
 ::res://graphics/HUD/::1737819264
 ::res://graphics/HUD/air meter/::1737819246
+::res://graphics/particles/::1737832131
+Bubble.png::CompressedTexture2D::7658544338980925326::1724599948::1737832131::1::::<><>::
 ::res://graphics/tile/::1737819178
-::res://scenes/::1737819202
-::res://scripts/::1737819208
+::res://scenes/::1737828516
+::res://scenes/Enemies/::1737835216
+::res://scenes/Enemies/urchin/::1737835216
+bottom_left_segment.tscn::PackedScene::2775830338403532718::1737835073::0::1::::<><>::uid://bl32o8msxyos7::::res://graphics/enemies/sea urchin/spike.png<>res://scripts/enemies/urchin/bottom_left_segment.gd<>uid://bcodp45p2kfd3::::res://scripts/particles/bubbles.tres<>uid://dhd4du6og6buk::::res://graphics/particles/Bubble.png
+bottom_right_segment.tscn::PackedScene::6057760780816514238::1737835073::0::1::::<><>::res://scripts/enemies/urchin/bottom_right_segment.gd<>uid://bl32o8msxyos7::::res://graphics/enemies/sea urchin/spike.png<>uid://bcodp45p2kfd3::::res://scripts/particles/bubbles.tres<>uid://dhd4du6og6buk::::res://graphics/particles/Bubble.png
+top_left_segment.tscn::PackedScene::3070574224414412619::1737835074::0::1::::<><>::uid://bl32o8msxyos7::::res://graphics/enemies/sea urchin/spike.png<>res://scripts/enemies/urchin/top_left_segment.gd<>uid://bcodp45p2kfd3::::res://scripts/particles/bubbles.tres<>uid://dhd4du6og6buk::::res://graphics/particles/Bubble.png
+top_right_segment.tscn::PackedScene::3531933910723234574::1737835073::0::1::::<><>::res://scripts/enemies/urchin/top_right_segment.gd<>uid://bl32o8msxyos7::::res://graphics/enemies/sea urchin/spike.png<>uid://bcodp45p2kfd3::::res://scripts/particles/bubbles.tres<>uid://dhd4du6og6buk::::res://graphics/particles/Bubble.png
+urchin.tscn::PackedScene::7620734944119686523::1737835225::0::1::::<><>::res://scripts/enemies/urchin.gd<>uid://ela1e2sjhncx::::res://graphics/enemies/sea urchin/urchin.png<>uid://bl32o8msxyos7::::res://graphics/enemies/sea urchin/spike.png
+::res://scenes/Level/::1737835199
+::res://scenes/Player/::1737835073
+bubble.tscn::PackedScene::8357787954035759588::1737835073::0::1::::<><>::res://scripts/bubble/bubble.gd<>uid://caa2b22fxyikv::::res://graphics/bubble/bubble_anim1.png<>uid://2yxn85b4drcq::::res://graphics/bubble/bubble_anim2.png
+::res://scripts/::1737832043
+::res://scripts/bubble/::1737827976
+bubble.gd::GDScript::-1::1737827976::0::1::::<>CharacterBody2D<>::
+::res://scripts/enemies/::1737834978
+urchin.gd::GDScript::-1::1737834978::0::1::::<>StaticBody2D<>::
+::res://scripts/enemies/urchin/::1737834425
+bottom_left_segment.gd::GDScript::-1::1737834425::0::1::::<>StaticBody2D<>::
+bottom_right_segment.gd::GDScript::-1::1737834425::0::1::::<>StaticBody2D<>::
+top_left_segment.gd::GDScript::-1::1737834425::0::1::::<>StaticBody2D<>::
+top_right_segment.gd::GDScript::-1::1737834425::0::1::::<>StaticBody2D<>::
+::res://scripts/particles/::1737833413
+bubbles.tres::ParticleProcessMaterial::2555910167652173558::1737833413::0::1::::<><>::

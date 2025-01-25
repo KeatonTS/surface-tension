@@ -1,0 +1,15 @@
+res://scripts/bubble/bubble.gd
+res://scenes/Player/bubble.tscn
+res://scenes/Level/level.tscn
+res://scripts/enemies/urchin.gd
+res://scenes/Enemies/urchin/top_right_segment.tscn
+res://scenes/Enemies/urchin/bottom_right_segment.tscn
+res://scenes/Enemies/urchin/bottom_left_segment.tscn
+res://scripts/enemies/urchin/top_left_segment.gd
+res://scripts/enemies/urchin/top_right_segment.gd
+res://scripts/enemies/urchin/bottom_left_segment.gd
+res://scripts/enemies/urchin/bottom_right_segment.gd
+res://scripts/particles/bubbles.tres
+res://scenes/Enemies/urchin/top_left_segment.tscn
+res://scenes/Enemies/urchin.tscn
+res://scenes/Enemies/urchin/urchin.tscn

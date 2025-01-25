@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgtsnke3hf2hj"]
+
+[ext_resource type="Script" path="res://scripts/enemies/urchin/urchin.gd" id="1_uaitb"]
+[ext_resource type="Texture2D" uid="uid://ela1e2sjhncx" path="res://graphics/enemies/sea urchin/urchin.png" id="2_pbcuy"]
+[ext_resource type="Texture2D" uid="uid://bl32o8msxyos7" path="res://graphics/enemies/sea urchin/spike.png" id="3_22kvp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkvhs"]
+radius = 32.1403
+
+[node name="Urchin" type="StaticBody2D"]
+script = ExtResource("1_uaitb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jkvhs")
+
+[node name="body" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_pbcuy")
+
+[node name="Spikes" type="Node2D" parent="body"]
+
+[node name="Spike1" type="Sprite2D" parent="body/Spikes"]
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+position = Vector2(-30, -30)
+texture = ExtResource("3_22kvp")
+
+[node name="Spike2" type="Sprite2D" parent="body/Spikes"]
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+position = Vector2(30, -30)
+texture = ExtResource("3_22kvp")
+flip_h = true
+
+[node name="Spike3" type="Sprite2D" parent="body/Spikes"]
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+position = Vector2(-30, 30)
+texture = ExtResource("3_22kvp")
+flip_v = true
+
+[node name="Spike4" type="Sprite2D" parent="body/Spikes"]
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+position = Vector2(30, 30)
+texture = ExtResource("3_22kvp")
+flip_h = true
+flip_v = true
+
+[node name="SpikePosList" type="Node2D" parent="body"]
+
+[node name="TopLeft" type="Marker2D" parent="body/SpikePosList"]
+position = Vector2(-30, -30)
+
+[node name="TopRight" type="Marker2D" parent="body/SpikePosList"]
+position = Vector2(30, -30)
+
+[node name="BottomLeft" type="Marker2D" parent="body/SpikePosList"]
+position = Vector2(-30, 30)
+
+[node name="BottomRight" type="Marker2D" parent="body/SpikePosList"]
+position = Vector2(30, 30)
+
+[node name="ReloadTimer" type="Timer" parent="."]
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="FiredSpikes" type="Node2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

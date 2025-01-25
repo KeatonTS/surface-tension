@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfsvrxi1tndjy"]
+
+[ext_resource type="Texture2D" uid="uid://bl32o8msxyos7" path="res://graphics/enemies/sea urchin/spike.png" id="1_cx8d3"]
+[ext_resource type="Script" path="res://scripts/enemies/urchin/bottom_left_segment.gd" id="1_v828v"]
+[ext_resource type="Material" uid="uid://bcodp45p2kfd3" path="res://scripts/particles/bubbles.tres" id="2_v0w3m"]
+[ext_resource type="Texture2D" uid="uid://dhd4du6og6buk" path="res://graphics/particles/Bubble.png" id="3_myibp"]
+
+[node name="BottomLeftSegment" type="StaticBody2D"]
+script = ExtResource("1_v828v")
+
+[node name="BubbleTrail" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+amount = 20
+process_material = ExtResource("2_v0w3m")
+texture = ExtResource("3_myibp")
+lifetime = 1.2
+speed_scale = 1.2
+fixed_fps = 60
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, -17, -17, 17, 17, 0)
+
+[node name="Spike" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture_filter = 1
+texture = ExtResource("1_cx8d3")
+flip_v = true
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="SpikeArea" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionPolygon2D" parent="SpikeArea"]
+visible = false
+polygon = PackedVector2Array(0, -17, -17, 17, 17, 0)
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
+[connection signal="body_entered" from="SpikeArea" to="." method="_on_spike_area_body_entered"]
