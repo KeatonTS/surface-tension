@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdxrgsarlucnd"]
+
+[ext_resource type="Texture2D" uid="uid://0s2o7euql6yr" path="res://graphics/Fish/Shark.png" id="1_uo5us"]
+[ext_resource type="Script" path="res://scripts/enemies/fish/followfish/shark.gd" id="2_0o4ro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6y83r"]
+size = Vector2(63, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cgl6p"]
+radius = 2.42134
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2bmy"]
+radius = 2.42134
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2g5q"]
+radius = 137.227
+
+[node name="shark" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("1_uo5us")
+script = ExtResource("2_0o4ro")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_6y83r")
+
+[node name="Right" type="Area2D" parent="."]
+position = Vector2(16.7028, -0.65551)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(17.2972, -0.34449)
+shape = SubResource("CircleShape2D_cgl6p")
+
+[node name="Left" type="Area2D" parent="."]
+position = Vector2(-16.6327, -0.853935)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-17.3673, -0.146065)
+shape = SubResource("CircleShape2D_c2bmy")
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_c2g5q")
+
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]

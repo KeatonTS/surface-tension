@@ -1,7 +1,12 @@
+res://scripts/enemies/fish/followfish
+res://scenes/Enemies/Fish/FollowFish
+res://scripts/enemies/fish/patrolfish
+res://scenes/Enemies/Fish/PatrolFish
+res://scripts/enemies/geyser
+res://scenes/Enemies/Geyser
 res://scripts/enemies/urchin
 res://scenes/Enemies/urchin
 res://scripts/enemies
 res://scenes/Enemies
-res://scenes/Level
 res://scenes/Player
 res://scripts/bubble

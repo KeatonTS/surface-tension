@@ -2,3 +2,9 @@ res://scenes/Player/bubble.tscn
 res://scripts/particles/bubbles.tres
 res://scenes/level.tscn
 res://graphics/background/tilemap.tres
+res://scripts/enemies/geyser/geyser.gd
+res://scenes/Enemies/Geyser/geyser.tscn
+res://scripts/enemies/fish/patrolfish/patrolfish.gd
+res://scenes/Enemies/Fish/PatrolFish/fish.tscn
+res://scenes/Enemies/Fish/FollowFish/shark.tscn
+res://scripts/enemies/fish/followfish/shark.gd
