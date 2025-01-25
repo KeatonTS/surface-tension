@@ -8,6 +8,7 @@
 radius = 32.1403
 
 [node name="Urchin" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_uaitb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -26,6 +27,11 @@ texture_filter = 1
 position = Vector2(-30, -30)
 texture = ExtResource("3_22kvp")
 
+[node name="Area2D" type="Area2D" parent="body/Spikes/Spike1"]
+
+[node name="Shape" type="CollisionPolygon2D" parent="body/Spikes/Spike1/Area2D"]
+polygon = PackedVector2Array(18, 0, 2, 20, -16, -16)
+
 [node name="Spike2" type="Sprite2D" parent="body/Spikes"]
 show_behind_parent = true
 z_index = -1
@@ -33,6 +39,11 @@ texture_filter = 1
 position = Vector2(30, -30)
 texture = ExtResource("3_22kvp")
 flip_h = true
+
+[node name="Area2D" type="Area2D" parent="body/Spikes/Spike2"]
+
+[node name="Shape" type="CollisionPolygon2D" parent="body/Spikes/Spike2/Area2D"]
+polygon = PackedVector2Array(-2, 20, -20, 2, 16, -16)
 
 [node name="Spike3" type="Sprite2D" parent="body/Spikes"]
 show_behind_parent = true
@@ -42,6 +53,11 @@ position = Vector2(-30, 30)
 texture = ExtResource("3_22kvp")
 flip_v = true
 
+[node name="Area2D" type="Area2D" parent="body/Spikes/Spike3"]
+
+[node name="Shape" type="CollisionPolygon2D" parent="body/Spikes/Spike3/Area2D"]
+polygon = PackedVector2Array(-18, 18, 2, -18, 20, -2)
+
 [node name="Spike4" type="Sprite2D" parent="body/Spikes"]
 show_behind_parent = true
 z_index = -1
@@ -50,6 +66,11 @@ position = Vector2(30, 30)
 texture = ExtResource("3_22kvp")
 flip_h = true
 flip_v = true
+
+[node name="Area2D" type="Area2D" parent="body/Spikes/Spike4"]
+
+[node name="Shape" type="CollisionPolygon2D" parent="body/Spikes/Spike4/Area2D"]
+polygon = PackedVector2Array(16, 16, -22, -4, -2, -20)
 
 [node name="SpikePosList" type="Node2D" parent="body"]
 
@@ -68,13 +89,19 @@ position = Vector2(30, 30)
 [node name="ReloadTimer" type="Timer" parent="."]
 
 [node name="FireTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="FiredSpikes" type="Node2D" parent="."]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-0.499999, 0.500003)
+scale = Vector2(3.25, 3.25)
 
+[connection signal="body_entered" from="body/Spikes/Spike1/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="body/Spikes/Spike2/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="body/Spikes/Spike3/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="body/Spikes/Spike4/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

@@ -1,14 +1,23 @@
-[gd_scene load_steps=8 format=4 uid="uid://dwmx4yklec2tb"]
+[gd_scene load_steps=11 format=4 uid="uid://brsj4vo6ug706"]
 
+[ext_resource type="Script" path="res://scripts/level/level.gd" id="1_1mwno"]
 [ext_resource type="Texture2D" uid="uid://rp6ra02ufwkx" path="res://graphics/background/Custom-Far.png" id="1_w55wr"]
 [ext_resource type="Texture2D" uid="uid://bufhrp75i3f6p" path="res://graphics/background/foregound-merged.png" id="2_1bv1m"]
-[ext_resource type="PackedScene" uid="uid://drctst1hqx437" path="res://scenes/Player/bubble.tscn" id="4_uevmf"]
-[ext_resource type="TileSet" uid="uid://nncl6vgkvdt" path="res://graphics/tile/tilemap.tres" id="5_717d2"]
-[ext_resource type="PackedScene" uid="uid://hvjemelqkhqc" path="res://scenes/Enemies/Geyser/geyser.tscn" id="5_ri8cn"]
-[ext_resource type="PackedScene" uid="uid://dcepj45x5doa3" path="res://scenes/Enemies/Fish/PatrolFish/fish.tscn" id="6_alx7v"]
-[ext_resource type="PackedScene" uid="uid://cdxrgsarlucnd" path="res://scenes/Enemies/Fish/FollowFish/shark.tscn" id="7_xfehm"]
+[ext_resource type="PackedScene" uid="uid://drctst1hqx437" path="res://scenes/Player/bubble.tscn" id="4_4mtji"]
+[ext_resource type="Script" path="res://scripts/camera/camera_2d.gd" id="5_7n4uv"]
+[ext_resource type="TileSet" uid="uid://nncl6vgkvdt" path="res://graphics/background/tilemap.tres" id="5_717d2"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_xveo0"]
+[ext_resource type="PackedScene" uid="uid://dgtsnke3hf2hj" path="res://scenes/Enemies/urchin/urchin.tscn" id="6_jnxko"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_xx1p2"]
+
+[sub_resource type="Resource" id="Resource_em6v2"]
+script = ExtResource("6_xx1p2")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_1mwno")
 
 [node name="Parallax" type="Node2D" parent="."]
 visible = false
@@ -66,3 +75,71 @@ position = Vector2(-15.5438, -999.674)
 [node name="Sprite2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_xfehm")]
 position = Vector2(59.9341, -1839.2)
 player = NodePath("../Bubble")
+[node name="Bubble" parent="." node_paths=PackedStringArray("level") instance=ExtResource("4_4mtji")]
+position = Vector2(-76, -136)
+scale = Vector2(0.3, 0.3)
+level = NodePath("..")
+
+[node name="CollisionShape2D" parent="Bubble" index="0"]
+visible = false
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_targets")]
+top_level = true
+position = Vector2(-76, -136)
+script = ExtResource("5_xveo0")
+follow_mode = 3
+follow_targets = [null]
+tween_resource = SubResource("Resource_em6v2")
+
+[node name="Camera2D" type="Camera2D" parent="PhantomCamera2D"]
+limit_bottom = 30
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+script = ExtResource("5_7n4uv")
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Urchins" type="Node2D" parent="Obstacles"]
+
+[node name="Urchin" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(-122, -1068)
+
+[node name="Urchin2" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(128, -1556)
+
+[node name="Urchin3" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(35.6074, -2378.64)
+
+[node name="Urchin4" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(-64.4431, -2786.4)
+
+[node name="Urchin5" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(177.189, -3360.27)
+
+[node name="Urchin6" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(-149, -4482)
+
+[node name="Urchin7" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
+position = Vector2(-334.755, -5144.32)
+
+[node name="RespawnPoint" type="Marker2D" parent="."]
+position = Vector2(-75.459, -136.655)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1054.0
+offset_top = -5728.0
+offset_right = -44.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.286275, 0.564706, 0.572549)
+
+[editable path="Bubble"]
