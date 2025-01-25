@@ -67,4 +67,3 @@ down={
 [rendering]
 
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0.134864, 0.243532, 0.668887, 1)

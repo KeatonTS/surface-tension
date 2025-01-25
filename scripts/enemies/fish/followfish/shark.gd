@@ -8,14 +8,20 @@ var chase: bool = false
 func _process(delta):
 	if chase:
 		position = position.move_toward(player.position, delta * 125)
+		look_at(player.position)
+		flipped = false
+		flip_h = false
 
 	else:
+		rotation = 0
 		if flipped == false:
 			position.x += 100 * delta
 		else:
 			position.x -= 100 * delta 
 
 func _on_right_body_entered(body):
+	if body.is_in_group("Bubble"):
+		return
 	if flipped == true:
 		flip_h = false
 		flipped = false
@@ -24,6 +30,8 @@ func _on_right_body_entered(body):
 		flipped = true
 		
 func _on_left_body_entered(body):
+	if body.is_in_group("Bubble"):
+		return
 	if flipped == false:
 		flip_h = true
 		flipped = true
@@ -38,3 +46,8 @@ func _on_detection_body_entered(body):
 func _on_detection_body_exited(body):
 	if body.name == "Bubble":
 		chase = false
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Bubble"):
+		body.pop()
