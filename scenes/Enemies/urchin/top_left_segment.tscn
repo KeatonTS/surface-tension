@@ -33,7 +33,8 @@ one_shot = true
 [node name="SpikeArea" type="Area2D" parent="."]
 
 [node name="Shape" type="CollisionPolygon2D" parent="SpikeArea"]
-polygon = PackedVector2Array(17, -18, -17, 0, 0, 17)
+visible = false
+polygon = PackedVector2Array(-17, -17, 0, 17, 17, 0)
 
 [connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
 [connection signal="body_entered" from="SpikeArea" to="." method="_on_spike_area_body_entered"]
