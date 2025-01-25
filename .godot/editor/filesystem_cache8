@@ -1,3 +1,18 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737818143
+::res://::1737819213
 icon.svg::CompressedTexture2D::4027565821163823554::1737818139::1737818144::1::::<><>::
+README.md::TextFile::-1::1737818267::0::1::::<><>::
+::res://audio/::1737819161
+::res://graphics/::1737819291
+::res://graphics/background/::1737819274
+::res://graphics/bubble/::1737819343
+bubble_anim1.png::CompressedTexture2D::4774483972083840409::1737819337::1737819348::1::::<><>::
+bubble_anim2.png::CompressedTexture2D::1946065330177715360::1737819337::1737819348::1::::<><>::
+::res://graphics/enemies/::1737819308
+::res://graphics/enemies/fish/::1737819303
+::res://graphics/enemies/sea urchin/::1737819285
+::res://graphics/HUD/::1737819264
+::res://graphics/HUD/air meter/::1737819246
+::res://graphics/tile/::1737819178
+::res://scenes/::1737819202
+::res://scripts/::1737819208
