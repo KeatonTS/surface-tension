@@ -1,0 +1,10 @@
+res://scenes/Enemies/SpikyBall/spiky_ball.gd
+res://scenes/Enemies/SpikyBall/SpikyBall.tscn
+res://graphics/tile/tilemap.tres
+res://scripts/particles/bubbles.tres
+res://scenes/level.tscn
+res://scenes/Enemies/Fish/PatrolFish/fish.tscn
+res://scripts/enemies/fish/patrolfish/patrolfish.gd
+res://scripts/level/level.gd
+res://scenes/Enemies/urchin/urchin.tscn
+res://scenes/Player/bubble.tscn

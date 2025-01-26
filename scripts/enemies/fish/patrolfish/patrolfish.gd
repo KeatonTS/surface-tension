@@ -1,12 +1,13 @@
 extends Sprite2D
 var flipped: bool = false
+@export var swim_speed: float
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if flipped == false:
-		position.x += 2
+		position.x += swim_speed
 	else:
-		position.x -= 2
+		position.x -= swim_speed
 
 func _on_right_body_entered(body):
 	if body.is_in_group("Bubble"):

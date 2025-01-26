@@ -10,4 +10,8 @@ func reset():
 	camera_2d.position = camera_2d.start_position
 	bubble.position = respawn_point.position
 	bubble.respawn()
-	
+
+
+func _on_win_area_body_entered(body):
+	if body.name == "Bubble":
+		body.set_process(false)
