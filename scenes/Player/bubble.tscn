@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://drctst1hqx437"]
+[gd_scene load_steps=9 format=3 uid="uid://drctst1hqx437"]
 
 [ext_resource type="Script" path="res://scripts/bubble/bubble.gd" id="1_owvo3"]
 [ext_resource type="Texture2D" uid="uid://caa2b22fxyikv" path="res://graphics/bubble/bubble_anim1.png" id="2_7m51x"]
 [ext_resource type="Texture2D" uid="uid://2yxn85b4drcq" path="res://graphics/bubble/bubble_anim2.png" id="3_3u6yh"]
 [ext_resource type="AudioStream" uid="uid://ceo8kf2uonl0x" path="res://audio/pop.wav" id="4_knp6t"]
 [ext_resource type="AudioStream" uid="uid://drulcl4xj42s6" path="res://audio/swim.wav" id="4_qya7y"]
+[ext_resource type="Texture2D" uid="uid://dstlg5k4qgbvg" path="res://graphics/bubble/person.png" id="4_xjuaq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dswyd"]
 radius = 125.16
@@ -36,6 +37,11 @@ position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_bimam")
 autoplay = "default"
 frame_progress = 0.633968
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+texture_filter = 1
+scale = Vector2(9, 9)
+texture = ExtResource("4_xjuaq")
 
 [node name="SFX" type="Node" parent="."]
 
