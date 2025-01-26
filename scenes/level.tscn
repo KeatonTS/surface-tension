@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://brsj4vo6ug706"]
+[gd_scene load_steps=25 format=4 uid="uid://brsj4vo6ug706"]
 
 [ext_resource type="Script" path="res://scripts/level/level.gd" id="1_1mwno"]
 [ext_resource type="Texture2D" uid="uid://rp6ra02ufwkx" path="res://graphics/background/Custom-Far.png" id="1_w55wr"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bt67rv6eu3boq" path="res://graphics/HUD/Button Face/button_2.png" id="14_5ab1q"]
 [ext_resource type="FontFile" uid="uid://bsoha3x6c5x1t" path="res://font/Russo_One/RussoOne-Regular.ttf" id="15_mp3w1"]
 [ext_resource type="AudioStream" uid="uid://bam6d2uxj1w58" path="res://audio/pump.wav" id="16_jwcys"]
+[ext_resource type="Texture2D" uid="uid://byyp7qahjxdf1" path="res://graphics/HUD/LeftStick/LS.png" id="17_pinc0"]
 
 [sub_resource type="Resource" id="Resource_em6v2"]
 script = ExtResource("6_xx1p2")
@@ -56,6 +57,9 @@ animations = [{
 "name": &"default",
 "speed": 12.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnl7t"]
+size = Vector2(544.916, 31)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1mwno")
@@ -144,12 +148,15 @@ position = Vector2(-334.755, -5144.32)
 
 [node name="PatrolFish" parent="Obstacles/Fish" instance=ExtResource("10_x0qlh")]
 position = Vector2(-277.243, -535.456)
+swim_speed = 2.0
 
 [node name="PatrolFish2" parent="Obstacles/Fish" instance=ExtResource("10_x0qlh")]
 position = Vector2(-73.9194, -3813.46)
+swim_speed = 2.0
 
 [node name="PatrolFish3" parent="Obstacles/Fish" instance=ExtResource("10_x0qlh")]
 position = Vector2(-384.371, -1403.66)
+swim_speed = 2.0
 
 [node name="Sharks" type="Node2D" parent="Obstacles"]
 
@@ -244,6 +251,45 @@ To Make a Long-Lasting Bubble!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Win" type="Label" parent="HUD"]
+visible = false
+texture_filter = 1
+offset_left = 270.0
+offset_top = 141.0
+offset_right = 887.0
+offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("15_mp3w1")
+theme_override_font_sizes/font_size = 38
+text = "YOU MADE IT TO THE SURFACE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls" type="Label" parent="HUD"]
+texture_filter = 1
+offset_left = 106.0
+offset_top = 585.0
+offset_right = 684.0
+offset_bottom = 644.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("15_mp3w1")
+theme_override_font_sizes/font_size = 48
+text = "AND TAP          TO MOVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonFace" type="AnimatedSprite2D" parent="HUD/Controls"]
+texture_filter = 1
+position = Vector2(286, 24)
+scale = Vector2(0.693642, 0.693642)
+sprite_frames = SubResource("SpriteFrames_c52yh")
+autoplay = "default"
+frame_progress = 0.525612
+
+[node name="LS" type="Sprite2D" parent="HUD/Controls"]
+position = Vector2(-88, 22)
+scale = Vector2(0.574419, 0.574419)
+texture = ExtResource("17_pinc0")
+
 [node name="TimeLeft" type="Label" parent="HUD"]
 texture_filter = 1
 offset_left = 270.0
@@ -270,7 +316,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 5.5
 one_shot = true
 autostart = true
 
@@ -279,6 +325,13 @@ autostart = true
 [node name="Pump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("16_jwcys")
 
+[node name="Surface" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Surface"]
+position = Vector2(-31.4579, -6211.5)
+shape = SubResource("RectangleShape2D_vnl7t")
+
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="body_entered" from="Surface" to="." method="_on_surface_body_entered"]
 
 [editable path="Bubble"]

@@ -13,6 +13,8 @@ const AIR_BUBBLE = preload("res://scenes/Collectables/air_bubble.tscn")
 @onready var pump_sfx: AudioStreamPlayer = $SFX/Pump
 @onready var time_left: Label = $HUD/TimeLeft
 @onready var start_timer: Timer = $StartTimer
+@onready var controls: Label = $HUD/Controls
+@onready var win: Label = $HUD/Win
 
 var started = false
 
@@ -29,10 +31,6 @@ func reset():
 	bubble.position = respawn_point.position
 	bubble.respawn()
 
-
-func _on_win_area_body_entered(body):
-	if body.name == "Bubble":
-		body.set_process(false)
 func spawn_air_bubbles():
 	if not air_bubbles.get_children().is_empty():
 		for bubble in air_bubbles.get_children():
@@ -56,8 +54,14 @@ func _on_start_timer_timeout() -> void:
 	button_face.hide()
 	label.hide()
 	time_left.hide()
+	controls.show()
 	air_meter.start()
 	set_process_input(false)
 	started = true
-	
-	
+
+
+func _on_surface_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Bubble"):
+		win.show()
+		set_process_input(false)
+		started = false

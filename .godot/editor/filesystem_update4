@@ -2,3 +2,5 @@ res://scenes/level.tscn
 res://scripts/particles/bubbles.tres
 res://graphics/tile/tilemap.tres
 res://decor_layer.tscn
+res://scripts/level/level.gd
+res://scenes/Player/bubble.tscn
