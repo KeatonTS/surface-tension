@@ -12,3 +12,12 @@ res://scenes/Enemies/Fish/FollowFish/shark.tscn
 res://scripts/enemies/fish/followfish/shark.gd
 res://scripts/enemies/fish/patrolfish/patrolfish.gd
 res://scenes/Enemies/Fish/PatrolFish/fish.tscn
+res://scenes/HUD/air_meter.tscn
+res://scripts/airmeter/air_meter.gd
+res://scripts/air_bubble/air_bubble.gd
+res://scenes/Collectables/air_bubble.tscn
+res://scripts/bubble/bubble.gd
+res://scripts/level/level.gd
+res://scripts/camera/camera_2d.gd
+res://shaders/underwater.gdshader
+res://graphics/particles/wind_lines.tres

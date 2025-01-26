@@ -1,10 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://hvjemelqkhqc"]
+[gd_scene load_steps=14 format=3 uid="uid://hvjemelqkhqc"]
 
 [ext_resource type="Texture2D" uid="uid://byxllugjfy2kx" path="res://graphics/tile/geyser.png" id="1_6nio6"]
 [ext_resource type="Script" path="res://scripts/enemies/geyser/geyser.gd" id="2_4dtuh"]
+[ext_resource type="AudioStream" uid="uid://bdcku2mruaiyu" path="res://audio/geyser.wav" id="3_7ou00"]
+[ext_resource type="Texture2D" uid="uid://dhd4du6og6buk" path="res://graphics/particles/Bubble.png" id="4_lmhua"]
+[ext_resource type="Material" uid="uid://crvan5gwswxk1" path="res://graphics/particles/wind_lines.tres" id="5_0704v"]
+[ext_resource type="Texture2D" uid="uid://bba5w4p2x8a20" path="res://graphics/particles/WindLine.png" id="6_xr77b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n74j8"]
 size = Vector2(20, 138.5)
+
+[sub_resource type="Curve" id="Curve_is0ob"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.496368, 0.508756), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_i7la6"]
+curve = SubResource("Curve_is0ob")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_vifxb"]
+
+[sub_resource type="Curve" id="Curve_njt0p"]
+_data = [Vector2(0, 0), 0.0, 0.227023, 0, 0, Vector2(0.5, 0.0915663), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_708es"]
+curve = SubResource("Curve_njt0p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k57c8"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0, 0, 1)
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_vifxb")
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 67.57
+gravity = Vector3(0, -700, 0)
+scale_curve = SubResource("CurveTexture_708es")
+alpha_curve = SubResource("CurveTexture_i7la6")
+turbulence_enabled = true
 
 [node name="Geyser" type="Sprite2D"]
 texture_filter = 1
@@ -13,10 +48,42 @@ texture = ExtResource("1_6nio6")
 script = ExtResource("2_4dtuh")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -61.25)
 shape = SubResource("RectangleShape2D_n74j8")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Geyser" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_7ou00")
+volume_db = -5.0
+autoplay = true
+
+[node name="Bubbles" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_k57c8")
+texture = ExtResource("4_lmhua")
+lifetime = 3.0
+fixed_fps = 60
+local_coords = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+rotation = 1.56924
+amount = 5
+process_material = ExtResource("5_0704v")
+texture = ExtResource("6_xr77b")
+lifetime = 10.0
+speed_scale = 10.0
+fixed_fps = 60
+interpolate = false
+local_coords = true
+trail_enabled = true
+trail_lifetime = 0.28
+trail_sections = 16
+trail_section_subdivisions = 16
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

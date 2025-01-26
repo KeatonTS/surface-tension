@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvgp40gairx04"]
+
+[ext_resource type="Script" path="res://scripts/airmeter/air_meter.gd" id="1_yhbka"]
+[ext_resource type="Texture2D" uid="uid://bssti8qejaml1" path="res://graphics/HUD/air meter/empty.png" id="2_i77ct"]
+[ext_resource type="Texture2D" uid="uid://dwq4gf4vxttc2" path="res://graphics/HUD/air meter/full.png" id="3_hrdji"]
+[ext_resource type="FontFile" uid="uid://bsoha3x6c5x1t" path="res://font/Russo_One/RussoOne-Regular.ttf" id="4_5t147"]
+
+[node name="AirMeter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_yhbka")
+
+[node name="Bar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("2_i77ct")
+texture_progress = ExtResource("3_hrdji")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 68.8889
+offset_top = 164.444
+offset_right = 193.889
+offset_bottom = 198.444
+theme_override_fonts/font = ExtResource("4_5t147")
+theme_override_font_sizes/font_size = 54
+text = "AIR METER"
+
+[node name="DrainTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="value_changed" from="Bar" to="." method="_on_bar_value_changed"]
+[connection signal="timeout" from="DrainTimer" to="." method="_on_drain_speed_timeout"]

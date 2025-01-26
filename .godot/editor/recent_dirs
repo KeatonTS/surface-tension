@@ -1,3 +1,8 @@
+res://shaders
+res://scenes/Collectables
+res://scripts/air_bubble
+res://scenes/HUD
+res://scripts/airmeter
 res://graphics/tile
 res://scripts/level
 res://scripts/camera
