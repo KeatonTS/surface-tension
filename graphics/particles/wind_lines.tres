@@ -1,4 +1,4 @@
-[gd_resource type="ParticleProcessMaterial" load_steps=9 format=3 uid="uid://crvan5gwswxk1"]
+[gd_resource type="ParticleProcessMaterial" load_steps=9 format=3 uid="uid://bdjsdlvf1k13t"]
 
 [sub_resource type="Curve" id="Curve_p20rx"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.177378, 0.172261), 0.0, 0.0, 0, 0, Vector2(0.375321, 0.043929), 0.0, 0.0, 0, 0, Vector2(0.521341, 0.0993977), -0.256868, -0.256868, 0, 0, Vector2(1, 0), 0.0612777, 0.0, 0, 0]

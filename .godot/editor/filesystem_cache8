@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737924122
+::res://::1737924960
 character_body_2d.gd::GDScript::-1::1737836554::0::1::::<>CharacterBody2D<>::
 icon.svg::CompressedTexture2D::4027565821163823554::1737818139::1737923884::1::::<><>::
 README.md::TextFile::-1::1737818267::0::1::::<><>::
@@ -160,19 +160,19 @@ camera_3d_resource.gd::GDScript::-1::1737846534::0::1::::Camera3DResource<>Resou
 phantom_camera_noise_2d.gd::GDScript::-1::1737846534::0::1::::PhantomCameraNoise2D<>Resource<>res://addons/phantom_camera/icons/phantom_camera_noise_resource.svg::
 phantom_camera_noise_3d.gd::GDScript::-1::1737846534::0::1::::PhantomCameraNoise3D<>Resource<>res://addons/phantom_camera/icons/phantom_camera_noise_resource.svg::
 tween_resource.gd::GDScript::-1::1737846534::0::1::::PhantomCameraTween<>Resource<>res://addons/phantom_camera/icons/phantom_camera_tween.svg::
-::res://audio/::1737924122
-geyser.wav::AudioStreamWAV::2601760293388326212::1737924122::1737924483::1::::<><>::
+::res://audio/::1737924946
+geyser.wav::AudioStreamWAV::2601760293388326212::1737924122::1737924946::1::::<><>::
 pop.wav::AudioStreamWAV::5084519854449922461::1737846534::1737923885::1::::<><>::
-pump.wav::AudioStreamWAV::2413082250983925813::1737924122::1737924483::1::::<><>::
-refill.wav::AudioStreamWAV::3952468259569635504::1737924122::1737924483::1::::<><>::
+pump.wav::AudioStreamWAV::2413082250983925813::1737924122::1737924946::1::::<><>::
+refill.wav::AudioStreamWAV::3952468259569635504::1737924122::1737924946::1::::<><>::
 swim.wav::AudioStreamWAV::8394432030129683207::1737846534::1737923885::1::::<><>::
 ::res://font/::1737924122
-::res://font/Russo_One/::1737924122
+::res://font/Russo_One/::1737924945
 OFL.txt::TextFile::-1::1737924122::0::1::::<><>::
-RussoOne-Regular.ttf::FontFile::3679147684280569107::1737924122::1737924483::1::::<><>::
+RussoOne-Regular.ttf::FontFile::3679147684280569107::1737924122::1737924945::1::::<><>::
 ::res://graphics/::1737924122
-::res://graphics/background/::1737924118
-5.png::CompressedTexture2D::6886565931574318234::1737924118::1737924483::1::::<><>::
+::res://graphics/background/::1737924946
+5.png::CompressedTexture2D::6886565931574318234::1737924943::1737924945::1::::<><>::
 Custom-Far.png::CompressedTexture2D::1226088633303406667::1737836554::1737923884::1::::<><>::
 far.png::CompressedTexture2D::5008152577133071436::1737836554::1737923884::1::::<><>::
 foregound-merged.png::CompressedTexture2D::3800975661328650337::1737836554::1737923884::1::::<><>::
@@ -182,14 +182,14 @@ sand.png::CompressedTexture2D::4981316508862765595::1737836554::1737923884::1:::
 ::res://graphics/bubble/::1737923884
 bubble_anim1.png::CompressedTexture2D::4774483972083840409::1737819530::1737923884::1::::<><>::
 bubble_anim2.png::CompressedTexture2D::1946065330177715360::1737819530::1737923884::1::::<><>::
-::res://graphics/enemies/::1737924118
+::res://graphics/enemies/::1737924943
 ::res://graphics/enemies/fish/::1737819303
 ::res://graphics/enemies/sea urchin/::1737923884
 spike.png::CompressedTexture2D::3217966653402235308::1737836420::1737923884::1::::<><>::
 urchin.png::CompressedTexture2D::303510213121589079::1737836420::1737923884::1::::<><>::
-::res://graphics/enemies/Spikyball/::1737924118
-chain.png::CompressedTexture2D::6018677587474555810::1737924118::1737924483::1::::<><>::
-Spikyball.png::CompressedTexture2D::8437362214172359858::1737924118::1737924483::1::::<><>::
+::res://graphics/enemies/Spikyball/::1737924945
+chain.png::CompressedTexture2D::6018677587474555810::1737924943::1737924945::1::::<><>::
+Spikyball.png::CompressedTexture2D::8437362214172359858::1737924943::1737924945::1::::<><>::
 ::res://graphics/Fish/::1737923884
 Anchovy.png::CompressedTexture2D::3706972706072561226::1737836554::1737923884::1::::<><>::
 BlueFish.png::CompressedTexture2D::8019531967979124583::1737836554::1737923884::1::::<><>::
@@ -203,37 +203,37 @@ StarFish.png::CompressedTexture2D::4483176285487011682::1737836554::1737923884::
 StoneFish.png::CompressedTexture2D::2516828633136175741::1737836554::1737923884::1::::<><>::
 SunFish.png::CompressedTexture2D::8892862205330275290::1737836554::1737923884::1::::<><>::
 ::res://graphics/HUD/::1737924122
-::res://graphics/HUD/air meter/::1737924122
-empty.png::CompressedTexture2D::3688148336145770320::1737924122::1737924483::1::::<><>::
-full.png::CompressedTexture2D::8738218471136356115::1737924122::1737924483::1::::<><>::
-low.png::CompressedTexture2D::129702855782619058::1737924122::1737924483::1::::<><>::
-::res://graphics/HUD/Button Face/::1737924122
-button_1.png::CompressedTexture2D::7860946075771879228::1737924122::1737924483::1::::<><>::
-button_2.png::CompressedTexture2D::3785978876545339984::1737924122::1737924483::1::::<><>::
-::res://graphics/particles/::1737924122
+::res://graphics/HUD/air meter/::1737924945
+empty.png::CompressedTexture2D::3688148336145770320::1737924122::1737924945::1::::<><>::
+full.png::CompressedTexture2D::8738218471136356115::1737924122::1737924945::1::::<><>::
+low.png::CompressedTexture2D::129702855782619058::1737924122::1737924945::1::::<><>::
+::res://graphics/HUD/Button Face/::1737924945
+button_1.png::CompressedTexture2D::7860946075771879228::1737924122::1737924945::1::::<><>::
+button_2.png::CompressedTexture2D::3785978876545339984::1737924122::1737924945::1::::<><>::
+::res://graphics/particles/::1737924945
 Bubble.png::CompressedTexture2D::7658544338980925326::1737836420::1737923884::1::::<><>::
-WindLine.png::CompressedTexture2D::2458471872188045639::1737924122::1737924483::1::::<><>::
+WindLine.png::CompressedTexture2D::2458471872188045639::1737924122::1737924945::1::::<><>::
 wind_lines.tres::ParticleProcessMaterial::-1::1737924122::0::1::::<><>::
 ::res://graphics/tile/::1737923884
 geyser.png::CompressedTexture2D::4119122210155042823::1737846464::1737923884::1::::<><>::
 tilemap.tres::TileSet::4454258119557046105::1737923361::0::1::::<><>::uid://btu57t4miht86::::res://graphics/tile/tileset.png
 tileset-export.png::CompressedTexture2D::7034306472822213957::1737846464::1737923884::1::::<><>::
 tileset.png::CompressedTexture2D::3763175966384057285::1737846464::1737923884::1::::<><>::
-::res://scenes/::1737924122
-level.tscn::PackedScene::3617389192123981121::1737923907::0::1::::<><>::
+::res://scenes/::1737924943
+level.tscn::PackedScene::3617389192123981121::1737924943::0::1::::<><>::res://scripts/level/level.gd<>uid://drctst1hqx437::::res://scenes/Player/bubble.tscn<>res://scripts/camera/camera_2d.gd<>uid://b4pw8ln01ll7v::::res://graphics/tile/tilemap.tres<>res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd<>uid://dgtsnke3hf2hj::::res://scenes/Enemies/urchin/urchin.tscn<>res://addons/phantom_camera/scripts/resources/tween_resource.gd<>uid://dcepj45x5doa3::::res://scenes/Enemies/Fish/PatrolFish/fish.tscn<>uid://cdxrgsarlucnd::::res://scenes/Enemies/Fish/FollowFish/shark.tscn<>uid://26nw0rqd13k::::res://scenes/Enemies/SpikyBall/SpikyBall.tscn<>uid://hvjemelqkhqc::::res://scenes/Enemies/Geyser/geyser.tscn<>res://shaders/underwater.gdshader<>uid://dvgp40gairx04::::res://scenes/HUD/air_meter.tscn<>uid://dj85vsf7j1haa::::res://graphics/HUD/Button Face/button_1.png<>uid://bt67rv6eu3boq::::res://graphics/HUD/Button Face/button_2.png<>uid://bsoha3x6c5x1t::::res://font/Russo_One/RussoOne-Regular.ttf<>uid://bam6d2uxj1w58::::res://audio/pump.wav
 ::res://scenes/Collectables/::1737924122
 air_bubble.tscn::PackedScene::-1::1737924122::0::1::::<><>::
-::res://scenes/Enemies/::1737924118
+::res://scenes/Enemies/::1737924943
 ::res://scenes/Enemies/Fish/::1737846464
 ::res://scenes/Enemies/Fish/FollowFish/::1737924122
-shark.tscn::PackedScene::5031932436492326709::1737923475::0::1::::<><>::uid://0s2o7euql6yr::::res://graphics/Fish/Shark.png<>res://scripts/enemies/fish/followfish/shark.gd
+shark.tscn::PackedScene::5031932436492326709::1737924122::0::1::::<><>::uid://0s2o7euql6yr::::res://graphics/Fish/Shark.png<>res://scripts/enemies/fish/followfish/shark.gd
 ::res://scenes/Enemies/Fish/PatrolFish/::1737923361
 fish.tscn::PackedScene::7308825647014773676::1737923361::0::1::::<><>::uid://bb4f2gwjcqwoj::::res://graphics/Fish/StoneFish.png<>res://scripts/enemies/fish/patrolfish/patrolfish.gd
 ::res://scenes/Enemies/Geyser/::1737924122
-geyser.tscn::PackedScene::535228071392991854::1737923475::0::1::::<><>::uid://byxllugjfy2kx::::res://graphics/tile/geyser.png<>res://scripts/enemies/geyser/geyser.gd<>uid://bdcku2mruaiyu::::res://audio/geyser.wav<>uid://dhd4du6og6buk::::res://graphics/particles/Bubble.png<>uid://crvan5gwswxk1::::res://graphics/particles/wind_lines.tres<>uid://bba5w4p2x8a20::::res://graphics/particles/WindLine.png
-::res://scenes/Enemies/SpikyBall/::1737924118
-SpikyBall.tscn::PackedScene::57644836383884066::1737923720::0::1::::<><>::res://scenes/Enemies/SpikyBall/spiky_ball.gd<>uid://cr0q0gbvoq6ks::::res://graphics/enemies/Spikyball/chain.png<>uid://dsheegetat2j3::::res://graphics/enemies/Spikyball/Spikyball.png
-spiky_ball.gd::GDScript::-1::1737924118::0::1::::<>Node2D<>::
+geyser.tscn::PackedScene::535228071392991854::1737924122::0::1::::<><>::uid://byxllugjfy2kx::::res://graphics/tile/geyser.png<>res://scripts/enemies/geyser/geyser.gd<>uid://bdcku2mruaiyu::::res://audio/geyser.wav<>uid://dhd4du6og6buk::::res://graphics/particles/Bubble.png<>uid://crvan5gwswxk1::::res://graphics/particles/wind_lines.tres<>uid://bba5w4p2x8a20::::res://graphics/particles/WindLine.png
+::res://scenes/Enemies/SpikyBall/::1737924943
+SpikyBall.tscn::PackedScene::57644836383884066::1737924943::0::1::::<><>::res://scenes/Enemies/SpikyBall/spiky_ball.gd<>uid://cr0q0gbvoq6ks::::res://graphics/enemies/Spikyball/chain.png<>uid://dsheegetat2j3::::res://graphics/enemies/Spikyball/Spikyball.png
+spiky_ball.gd::GDScript::-1::1737924943::0::1::::<>Node2D<>::
 ::res://scenes/Enemies/urchin/::1737923361
 bottom_left_segment.tscn::PackedScene::2775830338403532718::1737923361::0::1::::<><>::uid://bl32o8msxyos7::::res://graphics/enemies/sea urchin/spike.png<>res://scripts/enemies/urchin/bottom_left_segment.gd<>uid://bcodp45p2kfd3::::res://scripts/particles/bubbles.tres<>uid://dhd4du6og6buk::::res://graphics/particles/Bubble.png
 bottom_right_segment.tscn::PackedScene::6057760780816514238::1737923361::0::1::::<><>::res://scripts/enemies/urchin/bottom_right_segment.gd<>uid://bl32o8msxyos7::::res://graphics/enemies/sea urchin/spike.png<>uid://bcodp45p2kfd3::::res://scripts/particles/bubbles.tres<>uid://dhd4du6og6buk::::res://graphics/particles/Bubble.png
@@ -258,8 +258,8 @@ camera_2d.gd::GDScript::-1::1737924122::0::1::::<>Camera2D<>::
 ::res://scripts/enemies/fish/::1737846464
 ::res://scripts/enemies/fish/followfish/::1737847637
 shark.gd::GDScript::-1::1737847637::0::1::::<>Sprite2D<>::
-::res://scripts/enemies/fish/patrolfish/::1737924118
-patrolfish.gd::GDScript::-1::1737924118::0::1::::<>Sprite2D<>::
+::res://scripts/enemies/fish/patrolfish/::1737924943
+patrolfish.gd::GDScript::-1::1737924943::0::1::::<>Sprite2D<>::
 ::res://scripts/enemies/geyser/::1737846464
 geyser.gd::GDScript::-1::1737846464::0::1::::<>Sprite2D<>::
 ::res://scripts/enemies/urchin/::1737846534
@@ -268,8 +268,8 @@ bottom_right_segment.gd::GDScript::-1::1737846534::0::1::::<>StaticBody2D<>::
 top_left_segment.gd::GDScript::-1::1737846534::0::1::::<>StaticBody2D<>::
 top_right_segment.gd::GDScript::-1::1737846534::0::1::::<>StaticBody2D<>::
 urchin.gd::GDScript::-1::1737846534::0::1::::<>StaticBody2D<>::
-::res://scripts/level/::1737924122
-level.gd::GDScript::-1::1737924122::0::1::::<>Node2D<>::
+::res://scripts/level/::1737924943
+level.gd::GDScript::-1::1737924943::0::1::::<>Node2D<>::
 ::res://scripts/particles/::1737923361
 bubbles.tres::ParticleProcessMaterial::2555910167652173558::1737923361::0::1::::<><>::
 ::res://shaders/::1737924122
