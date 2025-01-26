@@ -7,13 +7,20 @@ extends CharacterBody2D
 @export var level: Node2D
 
 var speed = 0
-var gravity = 100
+var gravity = 0
 var v_direction = 0
 var h_direction = 0
 var x_direction = 0
 var y_direction = 0
 var popped = false
 var in_danger = false
+
+func _ready() -> void:
+	set_process_input(false)
+
+func start():
+	gravity = 100
+	set_process_input(true)
 
 func _process(_delta: float) -> void:
 	speed = clamp(speed, 0, 400)
@@ -38,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _input(event: InputEvent) -> void:
-	if Input.get_axis("ui_left", "ui_right") or Input.get_axis("ui_up", "ui_down"):
+	if Input.get_axis("left", "right") or Input.get_axis("up", "down"):
 		if event.is_action_pressed("push") and not popped:
 			swim_sfx.volume_db = randi_range(-10, -5)
 			swim_sfx.pitch_scale = randf_range(0.8, 1.2)
@@ -48,27 +55,32 @@ func _input(event: InputEvent) -> void:
 
 func respawn():
 	await get_tree().create_timer(2, false).timeout
+	swim_sfx.play()
 	show()
 	level.camera_2d.position_smoothing_speed = 1
 	gravity = 100
 	popped = false
+	level.air_meter.refill(100)
+	await get_tree().create_timer(1, false).timeout
+	level.started = true
+	level.air_meter.start()
 
 func pop():
 	if popped:
 		return
+	level.air_meter.stop()
 	popped = true
 	pop_sfx.play()
 	gravity = 0
 	hide()
 	level.reset()
-
+	level.started = false
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	in_danger = true
 	await get_tree().create_timer(1, false).timeout
-	if not screen_notifier.is_on_screen() and not popped or not in_danger:
+	if not screen_notifier.is_on_screen() and not popped or in_danger:
 		pop()
-
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	in_danger = false
