@@ -1,6 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://brsj4vo6ug706"]
+[gd_scene load_steps=23 format=4 uid="uid://brsj4vo6ug706"]
 
 [ext_resource type="Script" path="res://scripts/level/level.gd" id="1_1mwno"]
+[ext_resource type="Texture2D" uid="uid://rp6ra02ufwkx" path="res://graphics/background/Custom-Far.png" id="1_w55wr"]
+[ext_resource type="Texture2D" uid="uid://bufhrp75i3f6p" path="res://graphics/background/foregound-merged.png" id="2_1bv1m"]
 [ext_resource type="PackedScene" uid="uid://drctst1hqx437" path="res://scenes/Player/bubble.tscn" id="4_4mtji"]
 [ext_resource type="Script" path="res://scripts/camera/camera_2d.gd" id="5_7n4uv"]
 [ext_resource type="TileSet" uid="uid://b4pw8ln01ll7v" path="res://graphics/tile/tilemap.tres" id="5_717d2"]
@@ -9,8 +11,12 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_xx1p2"]
 [ext_resource type="PackedScene" uid="uid://dcepj45x5doa3" path="res://scenes/Enemies/Fish/PatrolFish/fish.tscn" id="10_x0qlh"]
 [ext_resource type="PackedScene" uid="uid://cdxrgsarlucnd" path="res://scenes/Enemies/Fish/FollowFish/shark.tscn" id="11_uk2q2"]
-[ext_resource type="PackedScene" uid="uid://26nw0rqd13k" path="res://scenes/Enemies/SpikyBall/SpikyBall.tscn" id="12_fqxu7"]
-[ext_resource type="PackedScene" uid="uid://hvjemelqkhqc" path="res://scenes/Enemies/Geyser/geyser.tscn" id="13_m84f5"]
+[ext_resource type="Shader" path="res://shaders/underwater.gdshader" id="12_tigvh"]
+[ext_resource type="PackedScene" path="res://scenes/HUD/air_meter.tscn" id="12_tulhe"]
+[ext_resource type="Texture2D" uid="uid://dj85vsf7j1haa" path="res://graphics/HUD/Button Face/button_1.png" id="13_bvmkb"]
+[ext_resource type="Texture2D" uid="uid://bt67rv6eu3boq" path="res://graphics/HUD/Button Face/button_2.png" id="14_5ab1q"]
+[ext_resource type="FontFile" uid="uid://bsoha3x6c5x1t" path="res://font/Russo_One/RussoOne-Regular.ttf" id="15_mp3w1"]
+[ext_resource type="AudioStream" uid="uid://bam6d2uxj1w58" path="res://audio/pump.wav" id="16_jwcys"]
 
 [sub_resource type="Resource" id="Resource_em6v2"]
 script = ExtResource("6_xx1p2")
@@ -18,11 +24,61 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_negew"]
-size = Vector2(620, 135.665)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tr6v6"]
+frequency = 0.0016
+fractal_type = 2
+fractal_gain = 1.0
+fractal_weighted_strength = 0.75
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uigxu"]
+invert = true
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_tr6v6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ayv8a"]
+shader = ExtResource("12_tigvh")
+shader_parameter/color = Color(4.81307e-07, 0.625944, 0.745556, 0)
+shader_parameter/speed = Vector2(0.04, 0.04)
+shader_parameter/wave_strength = 1.25
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_uigxu")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c52yh"]
+animations = [{
+"frames": [{
+"duration": 1.5,
+"texture": ExtResource("13_bvmkb")
+}, {
+"duration": 2.0,
+"texture": ExtResource("14_5ab1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1mwno")
+
+[node name="Parallax" type="Node2D" parent="."]
+visible = false
+
+[node name="Parallax2d" type="Parallax2D" parent="Parallax"]
+scroll_scale = Vector2(0.25, 0.25)
+repeat_size = Vector2(256, 192)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Parallax2d"]
+texture = ExtResource("1_w55wr")
+centered = false
+offset = Vector2(250, 250)
+
+[node name="Parallax2D2" type="Parallax2D" parent="Parallax"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax/Parallax2D2"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_1bv1m")
+centered = false
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -51,34 +107,35 @@ follow_mode = 3
 follow_targets = [null]
 tween_resource = SubResource("Resource_em6v2")
 
-[node name="Camera2D" type="Camera2D" parent="PhantomCamera2D"]
+[node name="Camera2D" type="Camera2D" parent="PhantomCamera2D" node_paths=PackedStringArray("level")]
 limit_bottom = 30
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 script = ExtResource("5_7n4uv")
+level = NodePath("../..")
 
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Urchins" type="Node2D" parent="Obstacles"]
 
 [node name="Urchin" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
-position = Vector2(-307, -1361)
+position = Vector2(-122, -1068)
 
 [node name="Urchin2" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
-position = Vector2(177, -1356)
+position = Vector2(128, -1556)
 
 [node name="Urchin3" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
-position = Vector2(54.0322, -2444.2)
+position = Vector2(35.6074, -2378.64)
 
 [node name="Urchin4" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
-position = Vector2(292, -2905)
+position = Vector2(-64.4431, -2786.4)
 
 [node name="Urchin5" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
-position = Vector2(-133, -3343)
+position = Vector2(177.189, -3360.27)
 
 [node name="Urchin6" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
-position = Vector2(-357, -4531)
+position = Vector2(-149, -4482)
 
 [node name="Urchin7" parent="Obstacles/Urchins" instance=ExtResource("6_jnxko")]
 position = Vector2(-334.755, -5144.32)
@@ -87,19 +144,12 @@ position = Vector2(-334.755, -5144.32)
 
 [node name="PatrolFish" parent="Obstacles/Fish" instance=ExtResource("10_x0qlh")]
 position = Vector2(-277.243, -535.456)
-swim_speed = 1.5
 
 [node name="PatrolFish2" parent="Obstacles/Fish" instance=ExtResource("10_x0qlh")]
-position = Vector2(95, -3683)
-swim_speed = 1.7
+position = Vector2(-73.9194, -3813.46)
 
 [node name="PatrolFish3" parent="Obstacles/Fish" instance=ExtResource("10_x0qlh")]
-position = Vector2(-237, -4845)
-swim_speed = 2.0
-
-[node name="PatrolFish4" parent="Obstacles/Fish" instance=ExtResource("10_x0qlh")]
-position = Vector2(428.968, -5719.63)
-swim_speed = 2.2
+position = Vector2(-384.371, -1403.66)
 
 [node name="Sharks" type="Node2D" parent="Obstacles"]
 
@@ -107,78 +157,128 @@ swim_speed = 2.2
 position = Vector2(-362.496, -1990.53)
 player = NodePath("../../../Bubble")
 
-[node name="shark2" parent="Obstacles/Sharks" instance=ExtResource("11_uk2q2")]
-position = Vector2(-577, -5539)
-
-[node name="Spikes" type="Node2D" parent="Obstacles"]
-
-[node name="Spikyball" parent="Obstacles/Spikes" instance=ExtResource("12_fqxu7")]
-position = Vector2(80, -671)
-
-[node name="Spikyball2" parent="Obstacles/Spikes" instance=ExtResource("12_fqxu7")]
-position = Vector2(-409, -2822)
-
-[node name="Spikyball3" parent="Obstacles/Spikes" instance=ExtResource("12_fqxu7")]
-position = Vector2(-69, -4021)
-
-[node name="Spikyball4" parent="Obstacles/Spikes" instance=ExtResource("12_fqxu7")]
-position = Vector2(265, -5024)
-
-[node name="Spikyball5" parent="Obstacles/Spikes" instance=ExtResource("12_fqxu7")]
-position = Vector2(-274, -5892)
-
-[node name="Geysers" type="Node2D" parent="Obstacles"]
-
-[node name="Geyser" parent="Obstacles/Geysers" node_paths=PackedStringArray("player") instance=ExtResource("13_m84f5")]
-position = Vector2(152.655, -1007.62)
-rotation = 4.71239
+[node name="shark2" parent="Obstacles/Sharks" node_paths=PackedStringArray("player") instance=ExtResource("11_uk2q2")]
+position = Vector2(-76.4403, -5109.35)
 player = NodePath("../../../Bubble")
 
-[node name="Geyser2" parent="Obstacles/Geysers" node_paths=PackedStringArray("player") instance=ExtResource("13_m84f5")]
-position = Vector2(497, -3224)
-rotation = 4.71239
-player = NodePath("../../../Bubble")
+[node name="Collectables" type="Node2D" parent="."]
 
-[node name="Geyser3" parent="Obstacles/Geysers" node_paths=PackedStringArray("player") instance=ExtResource("13_m84f5")]
-position = Vector2(-321, -3531)
-rotation = 1.5708
-direction = "Right"
-player = NodePath("../../../Bubble")
+[node name="AirBubbles" type="Node2D" parent="Collectables"]
 
-[node name="Geyser4" parent="Obstacles/Geysers" node_paths=PackedStringArray("player") instance=ExtResource("13_m84f5")]
-position = Vector2(-273, -4941)
-rotation = 1.5708
-direction = "Right"
-player = NodePath("../../../Bubble")
+[node name="SpawnPoints" type="Node2D" parent="Collectables/AirBubbles"]
+
+[node name="Marker2D" type="Marker2D" parent="Collectables/AirBubbles/SpawnPoints"]
+position = Vector2(334, -1714)
+
+[node name="Marker2D7" type="Marker2D" parent="Collectables/AirBubbles/SpawnPoints"]
+position = Vector2(-324.159, -2040.84)
+
+[node name="Marker2D2" type="Marker2D" parent="Collectables/AirBubbles/SpawnPoints"]
+position = Vector2(-470.297, -2573.26)
+
+[node name="Marker2D8" type="Marker2D" parent="Collectables/AirBubbles/SpawnPoints"]
+position = Vector2(428.674, -3136.72)
+
+[node name="Marker2D3" type="Marker2D" parent="Collectables/AirBubbles/SpawnPoints"]
+position = Vector2(135.224, -3689.11)
+
+[node name="Marker2D4" type="Marker2D" parent="Collectables/AirBubbles/SpawnPoints"]
+position = Vector2(392.247, -5126.31)
+
+[node name="Marker2D5" type="Marker2D" parent="Collectables/AirBubbles/SpawnPoints"]
+position = Vector2(-662.245, -5449.73)
+
+[node name="Marker2D6" type="Marker2D" parent="Collectables/AirBubbles/SpawnPoints"]
+position = Vector2(-300.39, -4483.5)
 
 [node name="RespawnPoint" type="Marker2D" parent="."]
 position = Vector2(-75.459, -136.655)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Water" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Water"]
+material = SubResource("ShaderMaterial_ayv8a")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1054.0
-offset_top = -6208.0
-offset_right = -44.0
-offset_bottom = -221.0
+offset_top = -6192.0
+offset_right = -69.0
+offset_bottom = -296.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.286275, 0.564706, 0.372549)
-metadata/_edit_lock_ = true
+rotation = -0.000474454
+color = Color(0, 0.286275, 0.564706, 1)
 
-[node name="WinArea" type="Node2D" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="WinArea" type="Area2D" parent="WinArea"]
-position = Vector2(-212.347, -6327.67)
+[node name="AirMeter" parent="HUD" node_paths=PackedStringArray("player") instance=ExtResource("12_tulhe")]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 43.0
+offset_bottom = 40.0
+player = NodePath("../../Bubble")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea/WinArea"]
-position = Vector2(177.347, 57.8325)
-shape = SubResource("RectangleShape2D_negew")
+[node name="ButtonFace" type="AnimatedSprite2D" parent="HUD"]
+texture_filter = 1
+position = Vector2(582.985, 243.61)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_c52yh")
+autoplay = "default"
+frame_progress = 0.776037
 
-[connection signal="body_entered" from="WinArea/WinArea" to="." method="_on_win_area_body_entered"]
+[node name="Label" type="Label" parent="HUD"]
+texture_filter = 1
+offset_left = 270.0
+offset_top = 141.0
+offset_right = 887.0
+offset_bottom = 338.0
+theme_override_fonts/font = ExtResource("15_mp3w1")
+theme_override_font_sizes/font_size = 38
+text = "Quickly Tap          
+
+
+To Make a Long-Lasting Bubble!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLeft" type="Label" parent="HUD"]
+texture_filter = 1
+offset_left = 270.0
+offset_top = 5.0
+offset_right = 887.0
+offset_bottom = 202.0
+theme_override_colors/font_color = Color(1, 0.443684, 0.375095, 1)
+theme_override_fonts/font = ExtResource("15_mp3w1")
+theme_override_font_sizes/font_size = 64
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Transition" type="ColorRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Pump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("16_jwcys")
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 
 [editable path="Bubble"]

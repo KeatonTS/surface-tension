@@ -1,4 +1,4 @@
 res://scenes/level.tscn
 res://scripts/particles/bubbles.tres
 res://graphics/tile/tilemap.tres
-res://graphics/particles/wind_lines.tres
+res://decor_layer.tscn
